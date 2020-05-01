@@ -6,13 +6,13 @@
 
 <script lang="ts">
 import Header from "@/components/header/Header.vue";
-
 import Vue from "vue";
+
 export default Vue.extend({
   name: "App",
   components: {
-    Header
-  }
+    Header,
+  },
 });
 </script>
 
@@ -21,6 +21,7 @@ html,
 body {
   width: 100%;
   height: 100%;
+  margin: 0;
   font-family: "Quicksand";
 }
 </style>
