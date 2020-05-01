@@ -27,11 +27,11 @@ header {
     display: block;
   }
 
-  span:first-child {
+  :first-child {
     font-size: 1.5em;
   }
 
-  span:nth-child(2) {
+  :nth-child(2) {
     font-size: 0.8em;
   }
 }
