@@ -28,6 +28,7 @@ header {
   color: $main-text-color;
   padding: 4% 8%;
   display: flow-root;
+  box-shadow: 0 0 15px black;
 }
 
 .title {
