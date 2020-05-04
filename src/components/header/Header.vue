@@ -1,7 +1,8 @@
 <template>
   <header>
     <div class="title">
-      <span>AcaDev Blog</span><span>by Gustavo Passos</span>
+      <span>AcaDev Blog</span>
+      <span>by Gustavo Passos</span>
     </div>
     <MenuIcon></MenuIcon>
   </header>
@@ -14,8 +15,8 @@ import MenuIcon from "./MenuIcon.vue";
 export default Vue.extend({
   name: "Header",
   components: {
-    MenuIcon,
-  },
+    MenuIcon
+  }
 });
 </script>
 
@@ -26,11 +27,11 @@ header {
   background: $main-color;
   color: $main-text-color;
   padding: 4% 8%;
-  display: flex;
+  display: flow-root;
 }
 
 .title {
-  width: 60%;
+  float: left;
 
   span {
     display: block;
