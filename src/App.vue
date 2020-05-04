@@ -2,21 +2,21 @@
   <div id="app">
     <Header></Header>
     <div class="router-body">
-      <Post />
+      <Blog />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Header from "@/components/header/Header.vue";
-import Post from "@/components/post/Post.vue";
+import Blog from "@/components/blog/Blog.vue";
 import Vue from "vue";
 
 export default Vue.extend({
   name: "App",
   components: {
     Header,
-    Post
+    Blog
   }
 });
 </script>
@@ -31,6 +31,6 @@ body {
 }
 
 .router-body {
-  padding: 3% 8%;
+  padding: 6% 8%;
 }
 </style>
