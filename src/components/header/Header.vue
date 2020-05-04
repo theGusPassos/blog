@@ -3,13 +3,19 @@
     <div class="title">
       <span>AcaDev Blog</span><span>by Gustavo Passos</span>
     </div>
+    <MenuIcon></MenuIcon>
   </header>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import MenuIcon from "./MenuIcon.vue";
+
 export default Vue.extend({
   name: "Header",
+  components: {
+    MenuIcon,
+  },
 });
 </script>
 
@@ -20,9 +26,12 @@ header {
   background: $main-color;
   color: $main-text-color;
   padding: 4% 8%;
+  display: flex;
 }
 
 .title {
+  width: 60%;
+
   span {
     display: block;
   }
