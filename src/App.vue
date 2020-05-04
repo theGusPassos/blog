@@ -31,6 +31,6 @@ body {
 }
 
 .router-body {
-  padding: 3% 8% 0 8%;
+  padding: 3% 8%;
 }
 </style>
