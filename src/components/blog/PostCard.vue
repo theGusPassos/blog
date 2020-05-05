@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section v-on:click="onCardClick">
     <img src="../../static/post.jpg" alt="test" />
     <div class="padded-info">
       <h1>{{ post.title }}</h1>
@@ -16,6 +16,11 @@ import Vue from "vue";
 export default Vue.extend({
   name: "PostCard",
   props: ["post"],
+  methods: {
+    onCardClick() {
+      this.$router.push("/post/my-first-post");
+    },
+  },
 });
 </script>
 

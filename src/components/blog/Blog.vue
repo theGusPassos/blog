@@ -1,7 +1,6 @@
 <template>
   <section>
     <input type="text" placeholder="search posts by title or theme =)" />
-
     <PostCard v-for="post in posts" :key="post.id" :post="post"></PostCard>
   </section>
 </template>
