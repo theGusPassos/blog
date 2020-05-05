@@ -10,14 +10,7 @@
 import Vue from "vue";
 import Post from "@/models/post.ts";
 import PostCard from "./PostCard.vue";
-
-const defaultPost: Post = {
-  id: 1,
-  title: "2D animation in unity with different sprite sizes",
-  author: "Gustavo Passos",
-  date: new Date(),
-  image: "",
-};
+import { posts } from "@/data/posts.ts";
 
 export default Vue.extend({
   name: "Blog",
@@ -25,7 +18,7 @@ export default Vue.extend({
     PostCard,
   },
   data: () => {
-    return { posts: [defaultPost, defaultPost, defaultPost] };
+    return { posts: posts };
   },
 });
 </script>

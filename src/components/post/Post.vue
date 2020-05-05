@@ -25,11 +25,15 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { getPostByTitle } from "@/functions/routeParamFunctions.ts";
+import Post from "@/models/post";
 
 export default Vue.extend({
   name: "Post",
-  created: () => {
-    console.log("test");
+  data() {
+    return {
+      post: getPostByTitle(""),
+    };
   },
 });
 </script>
