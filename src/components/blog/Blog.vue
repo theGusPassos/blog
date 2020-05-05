@@ -2,7 +2,7 @@
   <section>
     <input type="text" placeholder="search posts by title or theme =)" />
 
-    <PostCard v-for="post in posts" :key="post.id" post="post"></PostCard>
+    <PostCard v-for="post in posts" :key="post.id" :post="post"></PostCard>
   </section>
 </template>
 
@@ -16,17 +16,17 @@ const defaultPost: Post = {
   title: "2D animation in unity with different sprite sizes",
   author: "Gustavo Passos",
   date: new Date(),
-  image: ""
+  image: "",
 };
 
 export default Vue.extend({
   name: "Blog",
   components: {
-    PostCard
+    PostCard,
   },
   data: () => {
-    return { posts: [defaultPost, defaultPost] };
-  }
+    return { posts: [defaultPost, defaultPost, defaultPost] };
+  },
 });
 </script>
 
