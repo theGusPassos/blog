@@ -4,7 +4,6 @@
     <div class="padded-info">
       <h1>{{ post.title }}</h1>
       <div class="post-info">
-        <span>{{ post.author }}</span>
         <span>{{ post.date | formatDate }}</span>
       </div>
     </div>
@@ -19,8 +18,8 @@ export default Vue.extend({
   methods: {
     onCardClick() {
       this.$router.push("/post/my-first-post");
-    },
-  },
+    }
+  }
 });
 </script>
 
@@ -50,14 +49,6 @@ img {
 
   span {
     display: block;
-  }
-
-  :first-child {
-    float: left;
-  }
-
-  :nth-child(2) {
-    float: right;
   }
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <header>
     <div class="title">
-      <span>AcaDev Blog</span>
+      <span>
+        <strong>AcaDev Blog</strong>
+      </span>
       <span>by Gustavo Passos</span>
     </div>
     <MenuIcon></MenuIcon>
@@ -38,12 +40,12 @@ header {
     display: block;
   }
 
-  :first-child {
+  :first-child strong {
     font-size: 1.5em;
   }
 
   :nth-child(2) {
-    font-size: 0.8em;
+    font-size: 0.9em;
   }
 }
 </style>

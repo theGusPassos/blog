@@ -1,11 +1,11 @@
 <template>
   <section>
-    <img src="../../static/post.jpg" alt="jumping" />
     <h1>{{ post.title }}</h1>
     <div class="post-info">
-      <span>{{ post.author }}</span>
       <span>{{ post.date | formatDate }}</span>
     </div>
+
+    <img src="../../static/post.jpg" alt="jumping" />
 
     <section>
       <p>
@@ -32,15 +32,15 @@ export default Vue.extend({
   name: "Post",
   data() {
     return {
-      post: getPostByTitle(""),
+      post: getPostByTitle("")
     };
-  },
+  }
 });
 </script>
 
 <style lang="scss" scoped>
 h1 {
-  margin-bottom: 0;
+  margin: 0;
 }
 
 img {
@@ -49,7 +49,7 @@ img {
 }
 
 .post-info {
-  margin: 10px 0px;
+  margin: 0 0 10px 0;
 
   span {
     display: block;
