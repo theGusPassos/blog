@@ -9,19 +9,15 @@
 import Vue from "vue";
 import Post from "@/models/post.ts";
 import PostCard from "./PostCard.vue";
-import { posts } from "@/data/posts.ts";
-import { getPosts } from "@/posts/postLoader.ts";
+import { getPosts } from "@/data/posts/postLoader.ts";
 
 export default Vue.extend({
   name: "Blog",
   components: {
     PostCard
   },
-  created() {
-    console.log(getPosts());
-  },
   data: () => {
-    return { posts: posts };
+    return { posts: getPosts() };
   }
 });
 </script>
