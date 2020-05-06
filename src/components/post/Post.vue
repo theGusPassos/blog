@@ -49,7 +49,7 @@ img {
 }
 
 .post-info {
-  margin: 0 0 10px 0;
+  margin: 5px 0 15px 0;
 
   span {
     display: block;

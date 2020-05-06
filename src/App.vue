@@ -12,8 +12,8 @@ import Vue from "vue";
 export default Vue.extend({
   name: "App",
   components: {
-    Header,
-  },
+    Header
+  }
 });
 </script>
 
@@ -23,7 +23,7 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
-  font-family: "Quicksand";
+  font-family: "Montserrat";
 }
 
 .router-body {

@@ -41,6 +41,7 @@ header {
   }
 
   :first-child strong {
+    letter-spacing: 2px;
     font-size: 1.5em;
   }
 
