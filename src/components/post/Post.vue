@@ -25,14 +25,17 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { getPostByTitle } from "@/functions/routeParamFunctions.ts";
+import {
+  getPostByTitle,
+  getPostTitleUrlAsTitle
+} from "@/functions/routeParamFunctions.ts";
 import Post from "@/models/post";
 
 export default Vue.extend({
   name: "Post",
   data() {
     return {
-      post: getPostByTitle("")
+      post: getPostByTitle("2d animation in unity with different sprite sizes")
     };
   }
 });

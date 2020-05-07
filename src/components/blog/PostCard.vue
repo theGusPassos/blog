@@ -9,12 +9,14 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { getPostTitleAsUrl } from "../../functions/routeParamFunctions";
 export default Vue.extend({
   name: "PostCard",
   props: ["post"],
   methods: {
     onCardClick() {
-      this.$router.push("/post/my-first-post");
+      console.log(getPostTitleAsUrl(this.post.title));
+      this.$router.push(`/post/${getPostTitleAsUrl(this.post.title)}`);
     }
   }
 });
