@@ -1,25 +1,6 @@
 <template>
-  <section>
-    <h1>{{ post.title }}</h1>
-    <div class="post-info">
-      <span>{{ post.date | formatDate }}</span>
-    </div>
-
-    <img src="../../static/post.jpg" alt="jumping" />
-
-    <section>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-        vehicula nisi vitae odio scelerisque, eu viverra nulla pharetra. Quisque
-        eu ultrices sapien. Maecenas eget tempor arcu.
-      </p>
-      <p>
-        Nullam rutrum erat a ante dapibus egestas. Mauris eu nisi sed eros
-        dictum fermentum. Nullam finibus, sapien vulputate pellentesque
-        dignissim, sapien ex feugiat tellus, in euismod turpis sem pellentesque
-        orci. Maecenas placerat ullamcorper neque.
-      </p>
-    </section>
+  <section v-if="!loading">
+    <VueShowdown :markdown="postMdFile" class="markdown"></VueShowdown>
   </section>
 </template>
 
@@ -27,7 +8,7 @@
 import Vue from "vue";
 import {
   getPostByTitle,
-  getPostTitleUrlAsTitle
+  getPostTitleUrlAsTitle,
 } from "@/functions/routeParamFunctions.ts";
 import Post from "@/models/post";
 
@@ -35,32 +16,51 @@ export default Vue.extend({
   name: "Post",
   data() {
     return {
-      post: getPostByTitle("2d animation in unity with different sprite sizes")
+      loading: true,
+      postMdFile: {},
+      post: getPostByTitle(""),
     };
-  }
+  },
+  created() {
+    this.fetchPost();
+  },
+  methods: {
+    fetchPost() {
+      this.loading = true;
+      fetch("posts/1_2d_animation_in_unity_with_different_sprite_sizes/post.md")
+        .then((request) => request.text())
+        .then((file) => {
+          this.postMdFile = file;
+          console.log(this.postMdFile);
+          this.loading = false;
+        })
+        .catch((error) => {
+          console.error(error);
+          this.loading = false;
+        });
+    },
+  },
 });
 </script>
 
-<style lang="scss" scoped>
-h1 {
-  margin: 0;
-}
-
-img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.post-info {
-  margin: 5px 0 15px 0;
-
-  span {
-    display: block;
+<style lang="scss">
+.markdown {
+  h1 {
+    margin: 0;
   }
-}
 
-p {
-  font-size: 1.1em;
-  line-height: 1.5;
+  :first-child {
+    margin: 0;
+  }
+
+  img {
+    width: 100% !important;
+    border-radius: 10px;
+  }
+
+  p {
+    font-size: 1.1em;
+    line-height: 1.5;
+  }
 }
 </style>
