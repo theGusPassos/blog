@@ -8,7 +8,7 @@
 import Vue from "vue";
 import {
   getPostByTitle,
-  getPostTitleUrlAsTitle,
+  getPostTitleUrlAsTitle
 } from "@/functions/routeParamFunctions.ts";
 import Post from "@/models/post";
 
@@ -18,7 +18,7 @@ export default Vue.extend({
     return {
       loading: true,
       postMdFile: {},
-      post: getPostByTitle(""),
+      post: getPostByTitle("")
     };
   },
   created() {
@@ -28,18 +28,18 @@ export default Vue.extend({
     fetchPost() {
       this.loading = true;
       fetch("posts/1_2d_animation_in_unity_with_different_sprite_sizes/post.md")
-        .then((request) => request.text())
-        .then((file) => {
+        .then(request => request.text())
+        .then(file => {
           this.postMdFile = file;
           console.log(this.postMdFile);
           this.loading = false;
         })
-        .catch((error) => {
+        .catch(error => {
           console.error(error);
           this.loading = false;
         });
-    },
-  },
+    }
+  }
 });
 </script>
 
@@ -49,13 +49,13 @@ export default Vue.extend({
     margin: 0;
   }
 
-  :first-child {
-    margin: 0;
-  }
-
   img {
     width: 100% !important;
     border-radius: 10px;
+  }
+
+  p:first-of-type {
+    margin: 0;
   }
 
   p {
