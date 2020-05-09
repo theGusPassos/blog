@@ -10,5 +10,13 @@ describe("postService", () => {
 
       expect(result).toBe(expected);
     });
+
+    it("should return same when doesn't has dashes", () => {
+      const url = "url";
+
+      const result = getPostTitleFromUrl(url);
+
+      expect(result).toBe(url);
+    });
   });
 });
