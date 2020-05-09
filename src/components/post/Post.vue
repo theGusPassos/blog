@@ -7,9 +7,10 @@
 <script lang="ts">
 import Vue from "vue";
 import {
-  getPostByTitle,
-  getPostTitleUrlAsTitle
-} from "@/functions/routeParamFunctions.ts";
+  getPostTitleUrlAsTitle,
+  getPostTitleAsUrl
+} from "@/functions/routeParamFunctions";
+import { getPostByTitle, getPostTitleFromUrl } from "@/services/postService";
 import Post from "@/models/post";
 
 export default Vue.extend({
@@ -18,7 +19,7 @@ export default Vue.extend({
     return {
       loading: true,
       postMdFile: {},
-      post: getPostByTitle("")
+      post: getPostByTitle(getPostTitleFromUrl(this.$route.params.title))
     };
   },
   created() {
