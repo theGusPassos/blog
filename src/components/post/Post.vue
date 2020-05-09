@@ -1,6 +1,11 @@
 <template>
-  <section v-if="!loading">
-    <VueShowdown :markdown="postMdFile" class="markdown"></VueShowdown>
+  <section>
+    <div v-if="!loading && post !== undefined">
+      <VueShowdown :markdown="postMdFile" class="markdown"></VueShowdown>
+    </div>
+    <div v-else-if="loading">loading post</div>
+    <div v-else-if="error">{{error}}</div>
+    <div v-else>post not found</div>
   </section>
 </template>
 
@@ -17,7 +22,8 @@ export default Vue.extend({
   name: "Post",
   data() {
     return {
-      loading: true,
+      loading: false,
+      error: null,
       postMdFile: {},
       post: getPostByTitle(getPostTitleFromUrl(this.$route.params.title))
     };
@@ -27,17 +33,18 @@ export default Vue.extend({
   },
   methods: {
     fetchPost() {
+      if (this.post === undefined) return;
+
       this.loading = true;
-      fetch("posts/1_2d_animation_in_unity_with_different_sprite_sizes/post.md")
+      fetch(`posts/${this.post?.folder}/post.md`)
         .then(request => request.text())
         .then(file => {
           this.postMdFile = file;
-          console.log(this.postMdFile);
           this.loading = false;
         })
         .catch(error => {
-          console.error(error);
           this.loading = false;
+          this.error = error;
         });
     }
   }
