@@ -8,3 +8,10 @@ export const getPostByTitle = (title: string): Post | undefined => {
 export const getPostTitleFromUrl = (title: string): string => {
   return title.replace(/-/g, " ");
 };
+
+export const getUrlWithPostFolder = (
+  url: string,
+  postFolder: string | undefined
+) => {
+  return `${url}/posts/${postFolder}`;
+};

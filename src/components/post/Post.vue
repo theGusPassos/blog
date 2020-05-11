@@ -15,8 +15,13 @@ import {
   getPostTitleUrlAsTitle,
   getPostTitleAsUrl
 } from "@/functions/routeParamFunctions";
-import { getPostByTitle, getPostTitleFromUrl } from "@/services/postService";
+import {
+  getPostByTitle,
+  getPostTitleFromUrl,
+  getUrlWithPostFolder
+} from "@/services/postService";
 import Post from "@/models/post";
+import { formatMdFile } from "../../services/mdFormatter";
 
 export default Vue.extend({
   name: "Post",
@@ -39,7 +44,13 @@ export default Vue.extend({
       fetch(`posts/${this.post?.folder}/post.md`)
         .then(request => request.text())
         .then(file => {
-          this.postMdFile = file;
+          this.postMdFile = formatMdFile(
+            file,
+            getUrlWithPostFolder(
+              window.location.origin + "/blog",
+              this.post?.folder
+            )
+          );
           this.loading = false;
         })
         .catch(error => {
