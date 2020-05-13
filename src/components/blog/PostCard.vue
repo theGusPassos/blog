@@ -25,7 +25,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 section {
   border-radius: 10px;
-  box-shadow: 0 0 5px 0px #00000075;
+  box-shadow: 0 0 3px 0px #00000075;
   margin-top: 20px;
 }
 
@@ -35,6 +35,6 @@ h1 {
 }
 
 .padded-info {
-  padding: 10px;
+  padding: 10px 20px;
 }
 </style>
