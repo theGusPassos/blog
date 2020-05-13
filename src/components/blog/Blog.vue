@@ -1,7 +1,16 @@
 <template>
   <section>
-    <input type="text" placeholder="search posts by title or theme =)" />
-    <PostCard v-for="post in posts" :key="post.id" :post="post"></PostCard>
+    <input
+      id="postTitle"
+      name="postTitle"
+      type="text"
+      placeholder="search posts by title =)"
+      @keyup="getPostsByTitle"
+      v-model="searchInput"
+    />
+    <div v-if="!loading">
+      <PostCard v-for="post in posts" :key="post.id" :post="post"></PostCard>
+    </div>
   </section>
 </template>
 
@@ -9,15 +18,20 @@
 import Vue from "vue";
 import Post from "@/models/post.ts";
 import PostCard from "./PostCard.vue";
-import { getPosts } from "@/data/posts/postLoader.ts";
+import { getPosts, getPostsByTitle } from "@/data/posts/postLoader.ts";
 
 export default Vue.extend({
   name: "Blog",
   components: {
     PostCard
   },
-  data: () => {
-    return { posts: getPosts() };
+  methods: {
+    getPostsByTitle() {
+      this.posts = getPostsByTitle(this.searchInput);
+    }
+  },
+  data() {
+    return { posts: getPosts(), searchInput: "", loading: false };
   }
 });
 </script>
