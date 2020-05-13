@@ -15,7 +15,6 @@ export default Vue.extend({
   props: ["post"],
   methods: {
     onCardClick() {
-      console.log(getPostTitleAsUrl(this.post.title));
       this.$router.push(`/post/${getPostTitleAsUrl(this.post.title)}`);
     }
   }
@@ -27,6 +26,12 @@ section {
   border-radius: 10px;
   box-shadow: 0 0 3px 0px #00000075;
   margin-top: 20px;
+}
+
+section:hover,
+section:active {
+  border-radius: 10px;
+  background-color: #00000075;
 }
 
 h1 {
