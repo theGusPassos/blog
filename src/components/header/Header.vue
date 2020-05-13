@@ -1,23 +1,28 @@
 <template>
-  <header>
-    <div class="title">
-      <span>
-        <strong>AcaDev Blog</strong>
-      </span>
-      <span>by Gustavo Passos</span>
-    </div>
-    <MenuIcon></MenuIcon>
-  </header>
+  <div>
+    <header>
+      <div class="title">
+        <span>
+          <strong>AcaDev Blog</strong>
+        </span>
+        <span>by Gustavo Passos</span>
+      </div>
+      <MenuIcon></MenuIcon>
+    </header>
+    <menu-options></menu-options>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import MenuIcon from "./MenuIcon.vue";
+import MenuOptions from "./MenuOptions.vue";
 
 export default Vue.extend({
   name: "Header",
   components: {
-    MenuIcon
+    MenuIcon,
+    MenuOptions
   }
 });
 </script>
