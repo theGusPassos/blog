@@ -1,7 +1,7 @@
 <template>
   <nav v-bind:class="{ active: showMenu,  }">
-    <a href="/">blog</a>
-    <a href="/">my portfolio</a>
+    <router-link to="/">blog</router-link>
+    <a href="https://theguspassos.github.io/" target="_blank" rel="noopener noreferrer">my portfolio</a>
   </nav>
 </template>
 
