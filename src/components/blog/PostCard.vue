@@ -1,9 +1,7 @@
 <template>
   <section v-on:click="onCardClick">
-    <div class="padded-info">
-      <h1>{{ post.title }}</h1>
-      <span>{{ post.date | formatDate }}</span>
-    </div>
+    <h1>{{ post.title }}</h1>
+    <span>{{ post.date | formatDate }}</span>
   </section>
 </template>
 
@@ -23,23 +21,16 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 section {
-  border-radius: 10px;
-  box-shadow: 0 0 3px 0px #00000075;
   margin-top: 20px;
 }
 
 section:hover,
 section:active {
-  border-radius: 10px;
-  background-color: #00000075;
+  cursor: pointer;
 }
 
 h1 {
   margin: 10px 0;
   font-size: 1.4em;
-}
-
-.padded-info {
-  padding: 10px 20px;
 }
 </style>
