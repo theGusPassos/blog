@@ -1,5 +1,5 @@
 <template>
-  <nav v-bind:class="{ active: showMenu,  }">
+  <nav>
     <router-link to="/">blog</router-link>
     <a href="https://theguspassos.github.io/" target="_blank" rel="noopener noreferrer">my portfolio</a>
   </nav>
@@ -9,8 +9,7 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "MenuOptions",
-  props: ["showMenu"]
+  name: "NavigationMenu"
 });
 </script>
 
@@ -18,11 +17,8 @@ export default Vue.extend({
 @import "../../styles/colors.scss";
 
 nav {
+  display: flex;
   width: 100%;
-  height: 0;
-  overflow: hidden;
-  transition: height 0.4s;
-  transition-timing-function: ease;
 
   a {
     background-color: $main-color;
@@ -34,9 +30,5 @@ nav {
     padding: 10px 0;
     text-decoration: none;
   }
-}
-
-.active {
-  height: 90px;
 }
 </style>

@@ -7,32 +7,19 @@
         </span>
         <span>by Gustavo Passos</span>
       </div>
-      <MenuIcon @click.native="onMenuIconClick"></MenuIcon>
     </header>
-    <MenuOptions v-bind:showMenu="menuActive"></MenuOptions>
+    <NavigationMenu></NavigationMenu>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import MenuIcon from "./MenuIcon.vue";
-import MenuOptions from "./MenuOptions.vue";
+import NavigationMenu from "./NavigationMenu.vue";
 
 export default Vue.extend({
   name: "Header",
   components: {
-    MenuIcon,
-    MenuOptions
-  },
-  methods: {
-    onMenuIconClick() {
-      this.menuActive = !this.menuActive;
-    }
-  },
-  data() {
-    return {
-      menuActive: false
-    };
+    NavigationMenu
   }
 });
 </script>
@@ -41,14 +28,15 @@ export default Vue.extend({
 @import "../../styles/colors.scss";
 
 header {
+  display: flex;
   background: $main-color;
   color: $main-text-color;
   padding: 4% 8%;
-  display: flow-root;
 }
 
 .title {
-  float: left;
+  width: 100%;
+  text-align: center;
 
   span {
     display: block;
