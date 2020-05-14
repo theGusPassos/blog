@@ -1,7 +1,7 @@
 <template>
   <nav>
     <router-link to="/">home</router-link>
-    <a href="https://theguspassos.github.io/" target="_blank" rel="noopener noreferrer">about</a>
+    <router-link to="/about">about</router-link>
   </nav>
 </template>
 
