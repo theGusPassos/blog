@@ -7,9 +7,9 @@
         </span>
         <span>by Gustavo Passos</span>
       </div>
-      <MenuIcon></MenuIcon>
+      <MenuIcon @click.native="onMenuIconClick"></MenuIcon>
     </header>
-    <menu-options></menu-options>
+    <MenuOptions v-bind:showMenu="menuActive"></MenuOptions>
   </div>
 </template>
 
@@ -23,6 +23,16 @@ export default Vue.extend({
   components: {
     MenuIcon,
     MenuOptions
+  },
+  methods: {
+    onMenuIconClick() {
+      this.menuActive = !this.menuActive;
+    }
+  },
+  data() {
+    return {
+      menuActive: false
+    };
   }
 });
 </script>

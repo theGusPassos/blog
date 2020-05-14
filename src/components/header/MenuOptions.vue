@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav v-bind:class="{ active: showMenu,  }">
     <a href="/">blog</a>
     <a href="/">my portfolio</a>
   </nav>
@@ -9,7 +9,8 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "MenuOptions"
+  name: "MenuOptions",
+  props: ["showMenu"]
 });
 </script>
 
@@ -18,6 +19,10 @@ export default Vue.extend({
 
 nav {
   width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.4s;
+  transition-timing-function: ease;
 
   a {
     background-color: $main-color;
@@ -29,5 +34,9 @@ nav {
     padding: 10px 0;
     text-decoration: none;
   }
+}
+
+.active {
+  height: 90px;
 }
 </style>
