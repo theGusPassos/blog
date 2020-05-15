@@ -1,6 +1,9 @@
 <template>
   <section>
-    <p>This blog porpuse is to share knowledge that might be useful for other software developers.</p>
+    <p>
+      This blog porpuse is to share knowledge that might be useful for other
+      <strong>software developers</strong>.
+    </p>
     <p>
       I have a
       <a
