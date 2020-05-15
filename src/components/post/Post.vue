@@ -76,6 +76,7 @@ export default Vue.extend({
   }
 
   p:first-of-type {
+    font-size: 1.3em;
     margin: 0;
   }
 

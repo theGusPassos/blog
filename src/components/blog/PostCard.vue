@@ -31,6 +31,6 @@ section:active {
 
 h1 {
   margin: 10px 0;
-  font-size: 1.4em;
+  font-size: 1.6em;
 }
 </style>

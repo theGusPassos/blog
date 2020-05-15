@@ -8,7 +8,7 @@ Vue.config.productionTip = false;
 Vue.filter("formatDate", function(value: string) {
   console.log(value);
   if (value) {
-    return moment(value).format("YYYY-MM-DD");
+    return moment(value).format("D MMM, YYYY");
   }
 });
 
