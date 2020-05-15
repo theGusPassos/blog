@@ -6,11 +6,13 @@
     <div v-else-if="loading">loading post</div>
     <div v-else-if="error">{{error}}</div>
     <div v-else>post not found</div>
+    <Comments :issueId="post.issueId"></Comments>
   </section>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import Comments from "./Comments.vue";
 import {
   getPostTitleUrlAsTitle,
   getPostTitleAsUrl
@@ -25,6 +27,7 @@ import { formatMdFile } from "../../services/mdFormatter";
 
 export default Vue.extend({
   name: "Post",
+  components: { Comments },
   data() {
     return {
       loading: false,
@@ -39,6 +42,8 @@ export default Vue.extend({
   methods: {
     fetchPost() {
       if (this.post === undefined) return;
+
+      console.log(this.post);
 
       this.loading = true;
       fetch(`posts/${this.post?.folder}/post.md`)

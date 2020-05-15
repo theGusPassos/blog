@@ -3,4 +3,5 @@ export default interface Post {
   title: string;
   folder: string;
   date: Date;
+  issueId: number;
 }

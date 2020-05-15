@@ -6,5 +6,6 @@ export const posts: Post[] = [
     date: new Date(2020, 11, 1),
     title: "2D animation in Unity with different sprite sizes",
     folder: "1_2d_animation_in_unity_with_different_sprite_sizes",
+    issueId: 1,
   },
 ];
