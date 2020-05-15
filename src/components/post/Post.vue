@@ -69,7 +69,8 @@ export default Vue.extend({
   }
 
   img {
-    width: 100% !important;
+    max-width: 100% !important;
+    margin: auto;
     border-radius: 10px;
   }
 
@@ -78,6 +79,7 @@ export default Vue.extend({
   }
 
   p {
+    display: flex;
     font-size: 1.1em;
     line-height: 1.5;
   }

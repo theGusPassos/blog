@@ -8,7 +8,7 @@
       @keyup="getPostsByTitle"
       v-model="searchInput"
     />
-    <div v-if="!loading">
+    <div class="posts" v-if="!loading">
       <PostCard v-for="post in posts" :key="post.id" :post="post"></PostCard>
     </div>
   </section>
@@ -46,5 +46,9 @@ input {
   font-size: 1.3em;
   outline: none;
   padding-bottom: 5px;
+}
+
+.posts {
+  margin-top: 5%;
 }
 </style>

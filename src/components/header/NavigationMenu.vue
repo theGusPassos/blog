@@ -26,7 +26,7 @@ nav {
   display: inline-flex;
   margin: auto;
   width: 50%;
-  max-width: 500px;
+  max-width: 700px;
 
   a {
     transition: background-color 0.5s;

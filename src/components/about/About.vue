@@ -25,7 +25,7 @@ export default Vue.extend({
 @import "../../styles/colors.scss";
 
 p {
-  font-size: 1.1em;
+  font-size: 1.2em;
   padding: 5px 0;
 }
 
