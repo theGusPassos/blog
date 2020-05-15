@@ -17,7 +17,9 @@ export default Vue.extend({
 });
 </script>
 
-<style>
+<style lang="scss">
+@import "./styles/devices.scss";
+
 html,
 body {
   width: 100%;
@@ -27,6 +29,14 @@ body {
 }
 
 .router-body {
-  padding: 6% 8%;
+  padding: 5% 8%;
+  max-width: 700px;
+  margin: auto;
+}
+
+@media (min-width: $tablet-size) {
+  .router-body {
+    padding: 2% 0;
+  }
 }
 </style>
