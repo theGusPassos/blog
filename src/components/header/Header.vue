@@ -34,7 +34,7 @@ header {
 .title {
   width: 100%;
   text-align: center;
-  padding: 10px 0;
+  padding: 20px 0;
 
   span {
     display: block;

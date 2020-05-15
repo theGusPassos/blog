@@ -25,7 +25,7 @@ nav {
 .link-wrapper {
   display: inline-flex;
   margin: auto;
-  width: 50%;
+  width: 100%;
   max-width: 700px;
 
   a {
