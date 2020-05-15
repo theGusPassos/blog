@@ -1,7 +1,9 @@
 <template>
   <nav>
-    <router-link to="/">home</router-link>
-    <router-link to="/about">about</router-link>
+    <div class="link-wrapper">
+      <router-link to="/">home</router-link>
+      <router-link to="/about">about</router-link>
+    </div>
   </nav>
 </template>
 
@@ -17,8 +19,14 @@ export default Vue.extend({
 @import "../../styles/colors.scss";
 
 nav {
+  display: flex;
+}
+
+.link-wrapper {
   display: inline-flex;
-  width: 100%;
+  margin: auto;
+  width: 50%;
+  max-width: 500px;
 
   a {
     transition: background-color 0.5s;
