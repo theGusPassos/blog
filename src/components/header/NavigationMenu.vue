@@ -17,11 +17,10 @@ export default Vue.extend({
 @import "../../styles/colors.scss";
 
 nav {
-  display: flex;
+  display: inline-flex;
   width: 100%;
 
   a {
-    background-color: $main-color;
     transition: background-color 0.5s;
     color: $main-text-color;
     text-align: center;

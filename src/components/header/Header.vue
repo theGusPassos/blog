@@ -1,15 +1,13 @@
 <template>
-  <div>
-    <header>
-      <div class="title">
-        <span>
-          <strong>AcaDev Blog</strong>
-        </span>
-        <span>by Gustavo Passos</span>
-      </div>
-    </header>
+  <header>
+    <div class="title">
+      <span>
+        <strong>AcaDev Blog</strong>
+      </span>
+      <span>by Gustavo Passos</span>
+    </div>
     <NavigationMenu></NavigationMenu>
-  </div>
+  </header>
 </template>
 
 <script lang="ts">
@@ -28,10 +26,8 @@ export default Vue.extend({
 @import "../../styles/colors.scss";
 
 header {
-  display: flex;
   background: $main-color;
   color: $main-text-color;
-  padding: 4% 8%;
 }
 
 .title {
