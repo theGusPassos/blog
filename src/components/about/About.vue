@@ -31,9 +31,4 @@ p {
   font-size: 1.2em;
   padding: 5px 0;
 }
-
-a {
-  color: $main-color;
-  font-weight: bold;
-}
 </style>

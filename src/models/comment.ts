@@ -1,11 +1,12 @@
 export interface Comment {
+  id: number;
   user: User;
-  created: Date;
-  updated: Date;
+  created_at: Date;
+  updated_at: Date;
   body: string;
 }
 
 export interface User {
   login: string;
-  avatarUrl: string;
+  avatar_url: string;
 }

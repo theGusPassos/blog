@@ -19,6 +19,7 @@ export default Vue.extend({
 
 <style lang="scss">
 @import "./styles/devices.scss";
+@import "./styles/colors.scss";
 
 html,
 body {
@@ -26,12 +27,18 @@ body {
   height: 100%;
   margin: 0;
   font-family: "Montserrat";
+  line-height: 1.5;
 }
 
 .router-body {
   padding: 5% 8%;
   max-width: 700px;
   margin: auto;
+}
+
+a {
+  color: $main-color;
+  font-weight: bold;
 }
 
 @media (min-width: $tablet-size) {
