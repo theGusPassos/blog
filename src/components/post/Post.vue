@@ -20,7 +20,8 @@ import {
 import {
   getPostByTitle,
   getPostTitleFromUrl,
-  getUrlWithPostFolder
+  getUrlWithPostFolder,
+  getPostMdFile
 } from "@/services/postService";
 import Post from "@/models/post";
 import { formatMdFile } from "../../services/mdFormatter";
@@ -36,32 +37,20 @@ export default Vue.extend({
       post: getPostByTitle(getPostTitleFromUrl(this.$route.params.title))
     };
   },
-  created() {
-    this.fetchPost();
+  async created() {
+    await this.fetchPost();
   },
   methods: {
-    fetchPost() {
+    async fetchPost() {
       if (this.post === undefined) return;
 
-      console.log(this.post);
-
       this.loading = true;
-      fetch(`posts/${this.post?.folder}/post.md`)
-        .then(request => request.text())
-        .then(file => {
-          this.postMdFile = formatMdFile(
-            file,
-            getUrlWithPostFolder(
-              window.location.origin + "/blog",
-              this.post?.folder
-            )
-          );
-          this.loading = false;
-        })
-        .catch(error => {
-          this.loading = false;
-          this.error = error;
-        });
+
+      try {
+        this.postMdFile = await getPostMdFile(this.post?.folder);
+      } finally {
+        this.loading = false;
+      }
     }
   }
 });
