@@ -1,6 +1,6 @@
 <template>
   <section>
-    <span class="comment-info">
+    <span class="where-to-comment-info">
       You can leave comments to this post in this
       <a
         :href="'https://github.com/theGusPassos/blog/issues/' + issueId"
@@ -13,11 +13,14 @@
       <div v-for="comment in comments" :key="comment.id" class="comment">
         <div>
           <img v-bind:src="comment.user.avatar_url" alt="user's github avatar" />
-          <span>{{ comment.user.login }}</span>
-          <time :datetime="comment.created_at">{{ comment.created_at | formatDate }}</time>
         </div>
-
-        <span>{{comment.body}}</span>
+        <div class="comment-info-wrapper">
+          <div class="comment-info">
+            <span>{{ comment.user.login }}</span>
+            <time :datetime="comment.created_at">{{ comment.created_at | formatDate }}</time>
+          </div>
+          <span>{{comment.body}}</span>
+        </div>
       </div>
     </div>
   </section>
@@ -33,6 +36,8 @@ export default Vue.extend({
   data() {
     return { comments: {} };
   },
+  /* eslint-disable @typescript-eslint/camelcase */
+
   async created() {
     this.comments = await getComments(this.issueId);
   }
@@ -44,9 +49,9 @@ section {
   font-size: 1.1em;
 }
 
-.comment-info {
+.where-to-comment-info {
   display: block;
-  margin-top: 40px;
+  margin: 40px 0;
 }
 
 h3 {
@@ -54,11 +59,29 @@ h3 {
 }
 
 .comment {
-  margin: 20px 0;
+  display: flex;
+  margin: 35px 0;
 
   img {
-    width: 20%;
-    max-width: 80px;
+    max-width: 70px;
+  }
+}
+
+.comment-info-wrapper {
+  padding-left: 15px;
+}
+
+.comment-info {
+  margin-bottom: 10px;
+
+  span {
+    display: block;
+    font-weight: bold;
+  }
+
+  time {
+    display: block;
+    font-size: 0.9em;
   }
 }
 </style>
