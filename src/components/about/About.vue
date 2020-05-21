@@ -2,7 +2,7 @@
   <section>
     <p>
       This blog porpuse is to share knowledge that might be useful for other
-      <strong>software developers</strong>.
+      <strong>software and game developers</strong>.
     </p>
     <p>
       I have a
