@@ -36,7 +36,6 @@ export default Vue.extend({
   data() {
     return { comments: {} };
   },
-  /* eslint-disable @typescript-eslint/camelcase */
 
   async created() {
     this.comments = await getComments(this.issueId);
@@ -60,7 +59,7 @@ h3 {
 
 .comment {
   display: flex;
-  margin: 35px 0;
+  margin: 0 0 35px 0;
 
   img {
     max-width: 70px;
@@ -72,8 +71,6 @@ h3 {
 }
 
 .comment-info {
-  margin-bottom: 10px;
-
   span {
     display: block;
     font-weight: bold;
