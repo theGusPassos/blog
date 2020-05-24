@@ -4,7 +4,7 @@
       <VueShowdown :markdown="postMdFile" class="markdown"></VueShowdown>
     </div>
     <div v-else-if="loading">loading post</div>
-    <div v-else-if="error">{{error}}</div>
+    <div v-else-if="error">{{ error }}</div>
     <div v-else>post not found</div>
     <Comments :issueId="post.issueId"></Comments>
   </section>
@@ -70,13 +70,13 @@ export default Vue.extend({
   }
 
   p:first-of-type {
-    font-size: 1.3em;
+    font-size: 1.1em;
     margin: 0;
   }
 
+  ul li,
   p {
-    display: flex;
-    font-size: 1.35em;
+    font-size: 1.3em;
   }
 }
 </style>
