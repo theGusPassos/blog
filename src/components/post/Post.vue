@@ -57,6 +57,8 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+@import "@/styles/colors.scss";
+
 .markdown {
   h1 {
     line-height: 1.2;
@@ -64,7 +66,8 @@ export default Vue.extend({
     margin: 0;
   }
 
-  h2 {
+  h2,
+  h3 {
     margin: 25px 0 0 0;
   }
 
@@ -73,6 +76,13 @@ export default Vue.extend({
     margin: auto;
     border-radius: 10px;
     display: flex;
+  }
+
+  .important {
+    background-color: $main-color;
+    color: $main-text-color;
+    padding: 10px;
+    border-radius: 10px;
   }
 
   p:first-of-type {
@@ -88,6 +98,15 @@ export default Vue.extend({
 
       a {
         text-decoration: none;
+      }
+
+      p {
+        font-size: 0.9em !important;
+        margin: 0;
+
+        a {
+          text-decoration: underline;
+        }
       }
     }
   }

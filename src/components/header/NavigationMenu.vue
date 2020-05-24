@@ -28,7 +28,8 @@ nav {
   width: 100%;
   max-width: 700px;
 
-  a {
+  a,
+  a:visited {
     transition: background-color 0.5s;
     color: $main-text-color;
     text-align: center;
