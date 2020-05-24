@@ -59,6 +59,7 @@ export default Vue.extend({
 <style lang="scss">
 .markdown {
   h1 {
+    line-height: 1.2;
     font-size: 1.9em;
     margin: 0;
   }
@@ -74,9 +75,14 @@ export default Vue.extend({
     display: flex;
   }
 
+  p,
+  ul {
+    margin-top: 0;
+  }
+
   p:first-of-type {
     font-size: 1.1em;
-    margin: 0;
+    margin: 0 0 35px 0;
   }
 
   ul li,
