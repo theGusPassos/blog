@@ -83,28 +83,29 @@ export default Vue.extend({
     color: $main-text-color;
     padding: 10px;
     border-radius: 10px;
-  }
+    margin-bottom: 35px;
 
-  p:first-of-type {
-    font-size: 1.1em;
+    p {
+      margin: 20px 0;
+    }
   }
 
   ul {
     margin-top: 0;
 
     li {
-      font-size: 1.4em;
       list-style: circle;
 
       a {
+        font-size: 1.3em;
         text-decoration: none;
       }
 
       p {
-        font-size: 0.9em !important;
         margin: 0;
 
         a {
+          font-size: 1em !important;
           text-decoration: underline;
         }
       }
