@@ -63,10 +63,15 @@ export default Vue.extend({
     margin: 0;
   }
 
+  h2 {
+    margin: 25px 0 0 0;
+  }
+
   img {
     max-width: 100% !important;
     margin: auto;
     border-radius: 10px;
+    display: flex;
   }
 
   p:first-of-type {
@@ -76,7 +81,7 @@ export default Vue.extend({
 
   ul li,
   p {
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
 }
 </style>
