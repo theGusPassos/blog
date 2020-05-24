@@ -36,7 +36,8 @@ body {
   margin: auto;
 }
 
-a {
+a,
+a:visited {
   color: $main-color;
   font-weight: bold;
 }

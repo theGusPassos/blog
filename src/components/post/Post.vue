@@ -75,18 +75,25 @@ export default Vue.extend({
     display: flex;
   }
 
-  p,
-  ul {
-    margin-top: 0;
-  }
-
   p:first-of-type {
     font-size: 1.1em;
-    margin: 0 0 35px 0;
   }
 
-  ul li,
+  ul {
+    margin-top: 0;
+
+    li {
+      font-size: 1.4em;
+      list-style: circle;
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+
   p {
+    margin: 0 0 35px 0;
     font-size: 1.2em;
   }
 }
