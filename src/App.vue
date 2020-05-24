@@ -32,7 +32,7 @@ body {
 
 .router-body {
   padding: 5% 8%;
-  max-width: 700px;
+  max-width: 800px;
   margin: auto;
 }
 
