@@ -15,13 +15,13 @@ import Vue from "vue";
 import Comments from "./Comments.vue";
 import {
   getPostTitleUrlAsTitle,
-  getPostTitleAsUrl
+  getPostTitleAsUrl,
 } from "@/functions/routeParamFunctions";
 import {
   getPostByTitle,
   getPostTitleFromUrl,
   getUrlWithPostFolder,
-  getPostMdFile
+  getPostMdFile,
 } from "@/services/postService";
 import Post from "@/models/post";
 import { formatMdFile } from "../../services/mdFormatter";
@@ -34,11 +34,12 @@ export default Vue.extend({
       loading: false,
       error: null,
       postMdFile: {},
-      post: getPostByTitle(getPostTitleFromUrl(this.$route.params.title))
+      post: getPostByTitle(getPostTitleFromUrl(this.$route.params.title)),
     };
   },
   async created() {
     await this.fetchPost();
+    this.$ga.page(this.$router);
   },
   methods: {
     async fetchPost() {
@@ -51,8 +52,8 @@ export default Vue.extend({
       } finally {
         this.loading = false;
       }
-    }
-  }
+    },
+  },
 });
 </script>
 

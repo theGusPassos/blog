@@ -23,16 +23,19 @@ import { getPosts, getPostsByTitle } from "@/data/posts/postLoader.ts";
 export default Vue.extend({
   name: "Blog",
   components: {
-    PostCard
+    PostCard,
+  },
+  created() {
+    this.$ga.page(this.$router);
   },
   methods: {
     getPostsByTitle() {
       this.posts = getPostsByTitle(this.searchInput);
-    }
+    },
   },
   data() {
     return { posts: getPosts(), searchInput: "", loading: false };
-  }
+  },
 });
 </script>
 
