@@ -13,6 +13,6 @@ export const posts: Post[] = [
     date: new Date(2020, 6, 8),
     title: "Cutting sprites in Unity programmatically",
     folder: "2_cutting_sprites_in_unity_programmatically",
-    issueId: 2,
+    issueId: 3,
   },
 ];
