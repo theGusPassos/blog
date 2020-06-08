@@ -8,4 +8,11 @@ export const posts: Post[] = [
     folder: "1_2d_animation_in_unity_with_different_sprite_sizes",
     issueId: 2,
   },
+  {
+    id: 1,
+    date: new Date(2020, 6, 8),
+    title: "Cutting sprites in Unity programmatically",
+    folder: "2_cutting_sprites_in_unity_programmatically",
+    issueId: 2,
+  },
 ];

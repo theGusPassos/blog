@@ -2,31 +2,30 @@
 
 <time datetime="2020-06-06">06 Jun, 2020</time>
 
-If you want to split your sprite to convey some sort of effect there are many ways of dealing with it, this tutorial uses a solution that can be used for every sprite in a game without too many manual configuration. Basically a single script that is attached to a object with a SpriteRenderer and easily cut the sprite.
+This tutorial gives one possible solution to a cut sprite effect in Unity with just one script.
 
-<div class="important">
-<p>
-To be clear, this solution does not cover cuts in diagonal. The sprites are only split in straight lines.
-</p>
-</div>
-
-![a sprite being cut in half and its parts moving apart]()
-
-_This is the end result of this tutorial, but keep in mind that you can edit the script to cut the sprite in n parts._
+There are many approaches to do this, I recommend using the following if you want a reusable script that can create independent objects, allowing you to add any effect to the generated pieces. However, keep in mind that this solution does not cover diagonal cuts, sprites are only split in straight lines.
 
 - [Example scenario](#sprites)
+- [Sprite Cutter script](#script)
+- [Using the script](#using)
+- [Credits and Resources](#credits)
 
 ## Example scenario <a name = "sprites"></a>
 
-Given a character that has an animation the script should cut his sprite in half in a way that each part can be headed to a different direction.
+Given a character that has an animation, the script should cut his sprite in half in a way that each part can be pushed to a different direction.
 
-![sprite of a 4 arm wizzard]()
-https://opengameart.org/content/bosses-and-monsters-spritesheets-ars-notoria
-_The character animation that will be used_
+We must also consider pivots since each sprite may have different sizes and a different pivot position for each one. [This post](https://theguspassos.github.io/blog/#/post/2d-animation-in-unity-with-different-sprite-sizes) covers how to set up an animation with different sprite sizes.
 
-# Code
+I'm using a sprite sheet from a character made by [Balmer](https://opengameart.org/content/bosses-and-monsters-spritesheets-ars-notoria).
 
-The first step is to declare the MonoBehaviour class that will contain the the method to cut the sprite.
+![a sprite being cut in half and its parts moving apart](imgs/sprite-being-cut.gif)
+
+_This is the end result of this tutorial, but keep in mind that you can edit the script to cut the sprite in more parts and add more effects to it._
+
+## Sprite Cutter script <a name = "script"></a>
+
+The first step is to declare the MonoBehaviour class that will contain the method to cut the sprite.
 
 ```
 public class SpriteCutter : MonoBehaviour
@@ -37,19 +36,19 @@ public class SpriteCutter : MonoBehaviour
         CutSpriteHorizontally(GetComponent<SpriteRenderer>(), transform.position);
     }
 
-    public GameObject[] CutSpriteHorizontally(SpriteRenderer renderer, Vector2 spritePosition) { }
+    public GameObject[] CutSpriteHorizontally(
+        SpriteRenderer renderer, Vector2 spritePosition)
+    { }
 }
 ```
 
-Notice that the method returns an array that will hold the reference for the parts cutted. This is necessary since new behaviour will be added to those parts (heading different directions) and doing it doesn't seem like a responsibility for the SpriteCutter component.
+The `CutSpriteFromEditor` method has a `ContextMenu` attribute that allows it to be called from the Unity inspector. You can do it even in the edit mode.
 
-Another important thing is the CutSpriteFromEditor method, that makes it possible to call the method without being in game.
+![image of the context menu functionality in the inspector](imgs/inspector-context-menu.png)
 
-![image of the context menu functionality in the inspector]()
+Notice that the method returns an array with references to the new sprites. This is necessary since new behaviour will be added to those parts (like force to different directions) and doing that is not a responsibility for the `SpriteCutter` component.
 
-_The option appears in the inspector as shown in the image._
-
-Inside the CutSpriteHorizontally method we will declare the first variables.
+Inside the `CutSpriteHorizontally` method we will declare the first variables.
 
 ```
 // this one for simplicity
@@ -59,9 +58,16 @@ var spriteToCut = renderer.sprite;
 var ySpriteSize = spriteToCut.texture.height / 2;
 ```
 
-We can then use the texture from the original sprite to create two new sprites each with half of the original. The problem behind that is the texture. The `spriteToCut.texture` holds a reference to the **entire sprite sheet**. Unity knows how to render the right piece of the sprite sheet by referring to the rect property in the sprite.
+Then we can use the texture from the original sprite to create two new sprites, each with half of the original. The problem behind that is the texture.
 
+<div class="important">
+<p>
+The <code>spriteToCut.texture</code> holds a reference to the <b>entire sprite sheet</b>. Unity knows how to render the right piece of the sprite sheet by referring to the rect property in the sprite.
+</p>
+<p>
 This means that we need to use the rect x and y position as our guide while cutting the sprite.
+</p>
+</div>
 
 ```
 var upperSprite = Sprite.Create(
@@ -77,19 +83,19 @@ var upperSprite = Sprite.Create(
     SpriteMeshType.FullRect);
 ```
 
-![explain the rect arguments]()
+![The rect.x and rect.y are in the bottom left, the rect.width and rect.height store the width and height of the image](imgs/rect-explanation.png)
 
-_The image explains each argument of the rect object passed to the Create method._
+_The image shows where each value of the rect used is in the sprite sheet for this specific sprite._
 
-The pivot is set as Vector2.zero. This is highly important since it will be used for later calculus to place the new sprites in the same position as the last one.
+- The pivot is set to Vector2.zero and will be placed in the bottom left. This is important since it will be used for later to place the new sprites in the same position as the last one.
 
-We're keeping the same pixel per unit value as the original sprite.
+- We're keeping the same pixel per unit value as the original sprite to avoid problems with sprites of different sizes.
 
-The zero I don't know.
+- Extrude is zero since it's not necessary for this case. [Sprite.Create docs](https://docs.unity3d.com/2018.2/Documentation/ScriptReference/Sprite.Create.html).
 
-The SpriteMeshType is important since it's more performatic, you can read more about it here:
+- The `SpriteMeshType.FullRect` is important since it's faster, you can read more about it [here](https://adventurecreator.org/forum/discussion/4194/performance-issue-unity-ui-inventory).
 
-Finally the lower body method call will be like that:
+Finally we can create the lower body sprite:
 
 ```
 var lowerSprite = Sprite.Create(
@@ -105,9 +111,9 @@ var lowerSprite = Sprite.Create(
     SpriteMeshType.FullRect);
 ```
 
-That could have been written as a loop, however since it's only two sprites it made sense to me to leave it like this for easier readability. However I highly recommend writing a loop if you're aiming for more cuts.
+Those method calls could have been structured in a loop, but since it's only two sprites it made sense to me to leave it like this for easier readability. Anyway, if you're aiming for more cuts I highly recommend writing a loop.
 
-Now the easy part is to create new game objects that will hold the SpriteRenderer component. Notice that the script also sets the same material as the original one to keep the standard.
+The next step is to create new game objects that will hold the `SpriteRenderer` component.
 
 ```
 var upperBody = new GameObject("Upper Body");
@@ -122,4 +128,78 @@ lowerBodyRenderer.sprite = lowerSprite;
 lowerBodyRenderer.material = spriteRenderer.material;
 ```
 
-If you run the method in the Unity inspector
+If you run the method in the Unity inspector two new game objects should be placed on the scene. However, their position is messy. Since the pivot for those new sprites are at `(0, 0)` we need to subtract it by the pivot from the original sprite to get the right relative position.
+
+```
+var xPivotInUnits = spriteToCut.pivot.x / spriteToCut.pixelsPerUnit;
+var yPivotInUnits = spriteToCut.pivot.y / spriteToCut.pixelsPerUnit;
+
+lowerBody.transform.position = spritePosition - new Vector2(xPivotInUnits, yPivot);
+```
+
+The lower body is the easiest since it doesn't need to have its height fixed. For the upper body we need to remove lower body's height to make sure it will appear above it.
+
+```
+upperBody.transform.position = spritePosition - new Vector2(
+                xPivotInUnits,
+                yPivotInUnits - (lowerSprite.rect.height / spriteToCut.pixelsPerUnit));
+```
+
+Then you can just return those objects as a GameObject array.
+
+```
+return new GameObject[] { upperBody, lowerBody };
+```
+
+If you try the method once again in the inspector you'll notice that the two new sprites are together and appear to be one, this is wanted since the change between them must be seamless.
+
+## Using the script <a name = "using"></a>
+
+This next script allows the functionality to be used in game. It calls the `CutSpriteHorizontally` when the Space bar is pressed and deletes the original sprite right after.
+
+```
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(SpriteCutter))]
+public class MageKiller : MonoBehaviour
+{
+    private SpriteRenderer spriteRenderer;
+    private SpriteCutter spriteCutter;
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteCutter = GetComponent<SpriteCutter>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            KillMage();
+        }
+    }
+
+    private void KillMage()
+    {
+        var mageParts = spriteCutter.CutSpriteHorizontally(
+            spriteRenderer,
+            transform.position);
+
+        Destroy(gameObject);
+    }
+}
+```
+
+## Example project <a name = "example"></a>
+
+You can check the full source code of this tutorial in [this github repo](https://github.com/theGusPassos/cutting-sprites-in-unity-programmatically).
+
+For the demo in my github repo I've also added an alpha remover to make the parts fade and a force applier to make it float.
+
+In this demo there's also a `verticalOffset` variable that allows the cut to be made with an offset, this is necessary if you don't want to cut exactly in the middle.
+
+## Credits and References <a name = "credits"></a>
+
+- The character animation was made by [Balmer](https://opengameart.org/content/bosses-and-monsters-spritesheets-ars-notoria).
+
+- [Sprite.Create docs](https://docs.unity3d.com/ScriptReference/Sprite.Create.html)
