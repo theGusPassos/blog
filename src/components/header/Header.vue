@@ -1,9 +1,7 @@
 <template>
   <header>
     <div class="title">
-      <span>
-        <strong>AcaDev Blog</strong>
-      </span>
+      <img src="/acadevlogo.png" />
       <span>by Gustavo Passos</span>
     </div>
     <NavigationMenu></NavigationMenu>
@@ -34,7 +32,10 @@ header {
 .title {
   width: 100%;
   text-align: center;
-  padding: 20px 0;
+
+  img {
+    width: 50%;
+  }
 
   span {
     display: block;
@@ -53,6 +54,12 @@ header {
 @media (min-width: $tablet-size) {
   header {
     font-size: 1.3em;
+  }
+
+  .title {
+    img {
+      width: 300px;
+    }
   }
 }
 </style>
