@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="title">
-      <img src="/acadevlogo.png" alt="academic developer logo" />
+      <img :src="require('../../assets/acadevlogo.png')" alt="academic developer logo" />
       <span>by Gustavo Passos</span>
     </div>
     <NavigationMenu></NavigationMenu>
