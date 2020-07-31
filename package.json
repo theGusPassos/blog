@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@types/showdown": "^1.9.3",
+    "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "moment": "^2.25.3",
     "raw-loader": "^4.0.1",

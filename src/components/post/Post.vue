@@ -1,7 +1,7 @@
 <template>
   <section>
     <div v-if="!loading && post !== undefined">
-      <div class="page-views">{{pageViews}} views</div>
+      <div class="page-views">{{ pageViews }} views</div>
       <VueShowdown :markdown="postMdFile" class="markdown"></VueShowdown>
     </div>
     <div v-else-if="loading">loading post</div>
@@ -16,13 +16,13 @@ import Vue from "vue";
 import Comments from "./Comments.vue";
 import {
   getPostTitleUrlAsTitle,
-  getPostTitleAsUrl
+  getPostTitleAsUrl,
 } from "@/functions/routeParamFunctions";
 import {
   getPostByTitle,
   getPostTitleFromUrl,
   getUrlWithPostFolder,
-  getPostMdFile
+  getPostMdFile,
 } from "@/services/postService";
 import Post from "@/models/post";
 import { formatMdFile } from "../../services/mdFormatter";
@@ -37,13 +37,14 @@ export default Vue.extend({
       error: null,
       postMdFile: {},
       pageViews: 0,
-      post: getPostByTitle(getPostTitleFromUrl(this.$route.params.title))
+      post: getPostByTitle(getPostTitleFromUrl(this.$route.params.title)),
     };
   },
   async created() {
     await this.fetchPost();
     this.$ga.page(this.$router);
-    this.pageViews = await getViewsByPage(this.$route.path);
+    //this.pageViews =
+    await getViewsByPage(this.$route.path);
   },
   methods: {
     async fetchPost() {
@@ -56,8 +57,8 @@ export default Vue.extend({
       } finally {
         this.loading = false;
       }
-    }
-  }
+    },
+  },
 });
 </script>
 
