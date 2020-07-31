@@ -1,7 +1,6 @@
 <template>
   <section>
     <div v-if="!loading && post !== undefined">
-      <div class="page-views">{{ pageViews }} views</div>
       <VueShowdown :markdown="postMdFile" class="markdown"></VueShowdown>
     </div>
     <div v-else-if="loading">loading post</div>
@@ -26,7 +25,6 @@ import {
 } from "@/services/postService";
 import Post from "@/models/post";
 import { formatMdFile } from "../../services/mdFormatter";
-import { getViewsByPage } from "../../services/googleAnalyticsService";
 
 export default Vue.extend({
   name: "Post",
@@ -43,8 +41,6 @@ export default Vue.extend({
   async created() {
     await this.fetchPost();
     this.$ga.page(this.$router);
-    //this.pageViews =
-    await getViewsByPage(this.$route.path);
   },
   methods: {
     async fetchPost() {
