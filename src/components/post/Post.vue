@@ -1,6 +1,7 @@
 <template>
   <section>
     <div v-if="!loading && post !== undefined">
+      <div class="page-views">{{pageViews}} views</div>
       <VueShowdown :markdown="postMdFile" class="markdown"></VueShowdown>
     </div>
     <div v-else-if="loading">loading post</div>
@@ -25,6 +26,7 @@ import {
 } from "@/services/postService";
 import Post from "@/models/post";
 import { formatMdFile } from "../../services/mdFormatter";
+import { getViewsByPage } from "../../services/googleAnalyticsService";
 
 export default Vue.extend({
   name: "Post",
@@ -34,12 +36,14 @@ export default Vue.extend({
       loading: false,
       error: null,
       postMdFile: {},
+      pageViews: 0,
       post: getPostByTitle(getPostTitleFromUrl(this.$route.params.title))
     };
   },
   async created() {
     await this.fetchPost();
     this.$ga.page(this.$router);
+    this.pageViews = await getViewsByPage(this.$route.path);
   },
   methods: {
     async fetchPost() {
@@ -59,6 +63,10 @@ export default Vue.extend({
 
 <style lang="scss">
 @import "@/styles/colors.scss";
+
+.page-views {
+  font-size: 1.2em;
+}
 
 .markdown {
   h1 {
