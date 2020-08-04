@@ -18,7 +18,7 @@ Broken Delivery Service is the game we came up with our 48 hours, it was made wi
 
 The jam theme was **Out of Control** and we brainstormed lots of ideas before committing to one. We knew that we didn’t have to rush that part since it was pretty important to get a nice idea first, but after some hours we might have started to panic.
 
-We ended up choosing the \_no control over when the character will jump mechanic\*, and even though it’s an interesting idea we didn’t stop to think if it was going to be used by other teams. I don’t see this as a mistake though, having an idea that’s broadly used is okay if we could design around it in a way that makes it interesting even when compared to other similar games.
+We ended up choosing the _no control over when the character will jump mechanic_, and even though it’s an interesting idea we didn’t stop to think if it was going to be used by other teams. I don’t see this as a mistake though, having an idea that’s broadly used is okay if we could design around it in a way that makes it interesting even when compared to other similar games.
 
 # Prototyping
 
@@ -42,13 +42,13 @@ If we had added more juice to the jump and made it more clear on when the robot 
 
 # Results
 
-You can see the ratings for our game on the [submission page](https://itch.io/jam/gmtk-2020/rate/697500). We ranked #807 overall, and with 5000+ games submitted I was happy to see our game in the top 15%. However it doesn’t mean it couldn’t have done better, so I took some time to play more games from the jam and think about our ratings to see what we could have done to go further.
+You can see the ratings for our game on the [submission page](https://itch.io/jam/gmtk-2020/rate/697500). We ranked _#807_ overall, and with 5000+ games submitted I was happy to see our game in the top 15%. However it doesn’t mean it couldn’t have done better, so I took some time to play more games from the jam and think about our ratings to see what we could have done to go further.
 
 ## Fun Ratings
 
-There was some feedback on the difficulty and that had an impact in this aspect. This is hard to discuss since it depends from player to player, but when players refer to frustrating scenarios where colliders are missplaced and the margin for error is too thin should definetly be fixed.
+There was some feedback on the difficulty and that had an impact in this aspect. This is hard to discuss since it varies from player to player, but when players refer to frustrating scenarios where colliders are missplaced and the margin for error is too thin should definetly be fixed.
 
-I've realized that for a Game Jam submission having a hard game might not be the best option, not in the way we did, since many people won’t be able to finish the game and enjoy the full experience.
+I've realized that for a Game Jam submission a hard game might not be the best option, not in the way we did it, since many people won’t be able to finish the game and enjoy the full experience.
 
 ## Presentation
 
@@ -56,7 +56,7 @@ We are not sure if everyone was voting based on the art and music or just one of
 
 ## Originality
 
-The idea is cool but we didn’t stop to think if there would be other games doing the same, we just wondered that after the development was going on. We could have made some tweaks on the genre though, just like one of the winners did, taking this overused idea and adding some new characteristics to it could have made the game better.
+The idea is cool but we didn’t stop to think if there would be other games doing the same, we just wondered that after the development was going on. We could have made some tweaks on the genre though, just like [one of the winners did](https://leko20.itch.io/restless-wing-syndrome), taking this overused idea and adding some new characteristics to it could have made the game better.
 
 # The overall jam experience
 
@@ -64,6 +64,6 @@ After the deadline I thought it was over, I wasn’t aware that the best part wa
 
 Playing those games was awesome given the fact that we had some kind of connection with the developers, all of us have spent 48 hours giving everything we had to develop a game.
 
-Reading and writing feedback is awesome, seeing other people play your game in different manners is exciting too. I’ve seen people do things I myself stated it wasn’t possible, people ending the game with less deaths than I did and finding the most absurd bugs.
+Reading and writing feedback was awesome, seeing other people play our game in different perspectives is exciting too. I’ve seen people do things that I myself stated it wasn’t possible, players ending the game with less deaths than I did and finding the most absurd bugs.
 
-I’m glad to have participated on this jam and I recommend that you do it as well if you have the change.
+I’m glad to have participated on this jam and I recommend that you do it as well if you have the chance.
